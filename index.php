@@ -525,7 +525,7 @@
   </main>
 
   <!--############################ footer ##############################-->
-    <?php include_once('includes/header.php');?>
+    <?php include_once('includes/footer.php');?>
 
     <script src="js/script.js"></script>
 

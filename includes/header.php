@@ -5,7 +5,7 @@
         <div class="row w-100">
           <!-- logos -->
           <div class="logo col-10 col-lg-1">
-            <a href="index.html"><h2 id="logoid" class="fs-1 fw-bold">Frec<Span id="lgdes">i</Span>pe<Span id="lgdes">.</Span></h2></a>
+            <a href="index.php"><h2 id="logoid" class="fs-1 fw-bold">Frec<Span id="lgdes">i</Span>pe<Span id="lgdes">.</Span></h2></a>
           </div>
 
           <!-- burger icon -->
@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse d-lg-flex justify-content-between col-lg-11 align-items-center pe-0" id="navbarScroll">
               <ul class="navbar-nav my-2 navbar-nav-scroll w-100 ps-lg-5 fs-5 d-flex flex-column justify-content-start flex-lg-row justify-content-lg-start" style="--bs-scroll-height: 200px;">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="index.html"><b>Home</b></a>
+                  <a class="nav-link active" aria-current="page" href="index.php"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#"><b>Recipes</b></a>

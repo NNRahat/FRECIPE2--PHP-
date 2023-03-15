@@ -239,7 +239,7 @@
   </main>
 
     <!--############################ footer ##############################-->
-    <?php include_once('includes/header.php');?>
+    <?php include_once('includes/footer.php');?>
 
 
 
@@ -248,7 +248,7 @@
     <script src="bootstrap/JS/bootstrap.min.js"></script>
     <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
 
-    
+
 </body>
 
 </html>
