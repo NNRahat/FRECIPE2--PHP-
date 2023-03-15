@@ -224,7 +224,8 @@
           <img class="userpicture" role="button" src="images1/users/player-1.png" alt="">
           <ul class="dropdown-menu end-0">
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Add a new recipe</a></li>
+            <li><a class="dropdown-item" href="#">Saved recipes</a></li>
+            <li><a class="dropdown-item" href="#">Add a recipe</a></li>
             <li><a class="dropdown-item" href="#">My recipes</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Log out!</a></li>
