@@ -214,3 +214,22 @@ nav .form-control:focus .btn{
     /* border-color: var(--bs-new-color) !important; */
 }
 
+
+/* new updates and phps to highlight */
+
+.profile-side-hover{
+    font-size: 17px !important;
+    transition: 0.5s !important;
+}
+.profile-side-hover:hover{
+    text-decoration: none !important;
+    color: #fff !important;
+    background-color: #cedcce !important;
+    transition: 0.5s !important;
+}
+.profile-side-hover.active{
+    text-decoration: none !important;
+    background-color: var(--bs-fa-solid-color) !important;
+    color: white !important;
+    transition: 0.5s !important;
+}
