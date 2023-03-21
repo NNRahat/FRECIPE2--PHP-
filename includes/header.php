@@ -163,86 +163,84 @@
     <div class="colorset nav-scroller shadow-sm pb-1 pt-1 position-sticky left-0 z-3 mt-0" style="top: -0.1%;">
       <nav class="nav d-lg-flex justify-content-between align-items-center pe-4 py-1" aria-label="Secondary navigation">
 
-      <!--######################  links #################### -->
+      <!--###################### links #################### -->
         <ul class="navbar-nav ps-lg-3 mb-2 mb-lg-0 d-lg-flex flex-lg-row flex-row flex-wrap" >
           <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">DINNERS</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">5-Ingredient Dinners</a></li>
+              <li><a class="dropdown-item" href="#">One-Pot Meals</a></li>
+              <li><a class="dropdown-item" href="#">Quick & Easy</a></li>
+              <li><a class="dropdown-item" href="#">30-Minute Meals</a></li>
+              <li><a class="dropdown-item" href="#">Soups, Stews & Chili</a></li>
+              <li><a class="dropdown-item" href="#">Comfort Food</a></li>
+              <li><a class="dropdown-item" href="#">Main Dishes</a></li>
+              <li><a class="dropdown-item" href="#">Sheet Pan Dinners</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">MEALS</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Breakfast & Brunch</a></li>
+              <li><a class="dropdown-item" href="#">Lunch</a></li>
+              <li><a class="dropdown-item" href="#">Healthy</a></li>
+              <li><a class="dropdown-item" href="#">Appetizers & Snacks</a></li>
+              <li><a class="dropdown-item" href="#">Dessert</a></li>
+              <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">INGREDIENTS</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Chicken</a></li>
+              <li><a class="dropdown-item" href="#">Beef</a></li>
+              <li><a class="dropdown-item" href="#">Seafood</a></li>
+              <li><a class="dropdown-item" href="#">Pasta</a></li>
+              <li><a class="dropdown-item" href="#">Fruits</a></li>
+              <li><a class="dropdown-item" href="#">Vegetables</a></li>
+              <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">OCCASIONS</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">St. Patrick's Day</a></li>
+              <li><a class="dropdown-item" href="#">Thanksgiving</a></li>
+              <li><a class="dropdown-item" href="#">Ramadan</a></li>
+              <li><a class="dropdown-item" href="#">April Fools' Day</a></li>
+              <li><a class="dropdown-item" href="#">Passover</a></li>
+              <li><a class="dropdown-item" href="#">Easter</a></li>
+              <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
             <a class="nav-link" href="">CUISINES</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
-            <a class="nav-link" href="" role="button">KITCHEN TIPS</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
-            <a class="nav-link" href="" role="button">FEATURES</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">US</a></li>
+              <li><a class="dropdown-item" href="#">Italian </a></li>
+              <li><a class="dropdown-item" href="#">Greek</a></li>
+              <li><a class="dropdown-item" href="#">Indian</a></li>
+              <li><a class="dropdown-item" href="#">Filipino</a></li>
+              <li><a class="dropdown-item" href="#">Japanese</a></li>
+              <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
           <li class="nav-item mx-2 fs-6 fw-bolder">
-          <a class="nav-link" href="#">ABOUT US</a>
+            <a class="nav-link" href="#">ABOUT US</a>
           </li> 
         </ul>
 
-<?php
-$User_ID=$_SESSION['uid'];                 
-$ret15=mysqli_query($con, "Select * from users where user_id='$User_ID'");
-$result15=mysqli_fetch_array($ret15);
-?>
+        <!-- ######profile######## -->
+        <?php
+        $User_ID=$_SESSION['uid'];                 
+        $ret15=mysqli_query($con, "Select * from users where user_id='$User_ID'");
+        $result15=mysqli_fetch_array($ret15);
+        ?>
         <!-- #################### image ######################## -->
         <div class="dropdown">
           <?php if(strlen($_SESSION['uid'] != 0)){?>
           <img class="userpicture" role="button" src="<?php echo $result15['profile_pic'];?>" alt="">
-          <?php }?>
+          <?php } ?>
 
           <ul class="dropdown-menu end-0">
             <li><a class="dropdown-item" href="myprofile.php?editid=<?php echo $User_ID;?>">Profile</a></li>

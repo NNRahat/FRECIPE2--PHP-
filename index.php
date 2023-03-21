@@ -97,11 +97,11 @@ if(isset($_POST['search'])){
         <div class="carousel-inner z-0 h-100">
           <div class="carousel-item active container-fluid px-0 h-100">
                         <!-- two for transparent and opacity purpose -->
-            <div class="card position-absolute positioning-headline rounded-0 z-3 bg-transparent rounded-3 border-0">
+            <div class="card position-absolute positioning-headline rounded-0 z-3 bg-transparent rounded-3 border-0 text-center">
               <a href="recipe-intro.php?editid=<?php echo $result0['recipe_id'];?>" class="link-hover"><h2 class="px-4 py-3"><?php echo $result0['recp_name'];?></h2></a>
-            </div>
-            <div class="card position-absolute positioning-headline rounded-0 z-2 opacity-75 rounded-3 border-0">
-              <a href="" class="link-hover opacity-0"><h2 class="px-4 py-3">Lorem ipsum, dolor sit amet consectetur.</h2></a>
+            </div>            
+            <div class="card position-absolute positioning-headline rounded-0 z-2 opacity-75 rounded-3 border-0 text-center">
+            <a href="recipe-intro.php?editid=<?php echo $result0['recipe_id'];?>" class="link-hover"><h2 class="px-4 py-3"><?php echo $result0['recp_name'];?></h2></a>
             </div>
                         <!-- two for transparent and opacity purpose -->
             <span class="position-relative d-flex justify-content-center h-100 z-1">
