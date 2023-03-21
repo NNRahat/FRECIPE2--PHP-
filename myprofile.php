@@ -1,3 +1,26 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+
+if(isset($_POST['save_profile']))
+{
+    $Email=$_POST['loginEmail'];
+    $Password=$_POST['loginPass'];
+
+    $query=mysqli_query($con,"select user_id from users where user_email='$Email' && user_password='$Password' ");
+    $ret=mysqli_fetch_array($query);
+    if($ret>0){
+        $_SESSION['uid']=$ret['user_id'];
+        header('location:index.php');
+    }
+    else{
+        $msg1="Invalid Details.";
+    }
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -42,39 +65,46 @@
         <div class="tab-content bg-gray col-lg-9 shadow">
           <!--#### Personal Info ###-->
           <div id="personal-info" class="tab-pane show active p-5">
+            <?php 
+              $aid=$_GET['editid'];                               
+              $ret1=mysqli_query($con, "Select users.*,cooker.* From users INNER JOIN cooker ON users.user_id=cooker.user_id where users.user_id='$aid'");
+              $row=mysqli_fetch_array($ret1);
+            ?>
+            <form method="post">
             <div class="d-flex justify-content-between align-items-center p-2 mb-4">
               <h1>Personal Info</h1>
-              <button class="btn bg-darkgreen py-3 px-4 text-light">Save Changes</button>
+              <button class="btn bg-darkgreen py-3 px-4 text-light" name="save_profile">Save Changes</button>
             </div>
             <!-- basic info -->
             <div class="container">
               <div class="row fs-5 fw-semibold">
                 <span class="d-flex flex-column mb-3 col-12 mb-3">
                   <label for="">Email:</label>
-                  <input type="email" class="rounded-3 px-2" style="height: 50px;border: 1px solid;">
+                  <input type="email" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" placeholder="<?php echo $row['user_email']?>" disabled >
                 </span>
                 <span class="col-12 container-fluid mb-3">
                   <span class="row">
                     <span class="d-flex flex-column mb-3 col-6">
                       <label for="">First name:</label>
-                      <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;">
+                      <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" value="<?php echo $row['F_name']?>">
                     </span>
                     <span class="d-flex flex-column mb-3 col-6">
                       <label for="">Last name:</label>
-                      <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;">
+                      <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" value="<?php echo $row['L_name']?>">
                     </span>
                   </span>
                 </span>
                 <span class="d-flex flex-column mb-3 col-6">
                   <label for="">Date Of Birth:</label>
-                  <input type="date" class="rounded-3 px-2" style="height: 50px;border: 1px solid;">
+                  <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" value="<?php echo $row['Date_of_birth']?>">
                 </span>
                 <span class="d-flex flex-column mb-3 col-6">
                   <label for="">Country:</label>
-                  <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;">
+                  <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" value="<?php echo $row['Country']?>">
                 </span>
               </div>          
             </div>
+            </form>
           </div>
 
           <!--### Public Profile Setting ### -->
@@ -147,6 +177,7 @@
                     <label for="">Your Email Address:</label>
                     <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" disable>
                   </span>
+                  
                   <span class="d-flex flex-column mb-3 col-6">
                     <label for="">Enter Your Old Password:</label>
                     <input type="text" class="rounded-3 px-2" style="height: 50px;border: 1px solid;" >

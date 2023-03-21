@@ -1,3 +1,9 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -12,26 +18,18 @@
     <?php include_once('includes/header.php');?>
 
     <main class="colorset">
+    <?php 
+    $aid=$_GET['editid'];    
+    $ret0=mysqli_query($con, "Select * From recipes where recipe_id='$aid'");      
+    $result0=mysqli_fetch_array($ret0);?>
+    
     <!--####################### hero carousel ########################-->
     <section class="d-flex flex-column justify-content-center align-items-center px-0 w-100 position-relative" style="height: 100vh;">
       <div id="carouselExampleAutoplaying" class="carousel slide w-100 h-100 overflow-hidden " data-bs-ride="carousel">
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-        <div class="carousel-indicators z-3 pb-4">
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active bg-lightgreen px-4 me-2" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" class="bg-lightgreen px-4 me-2" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" class="bg-lightgreen px-4 me-2" aria-label="Slide 3"></button>
-        </div>
         <div class="carousel-inner z-0 h-100">
           <div class="carousel-item active container-fluid px-0 h-100">
             <span class="position-relative d-flex justify-content-center h-100 z-1">
-              <img class="w-100 h-100 object-fit-cover" src="images1/pizza.jpg"  alt="...">
+              <img class="w-100 h-100 object-fit-cover" src="<?php echo $result0['thumbnail_url']?>"  alt="...">
             </span>
           </div>
         </div>
@@ -43,18 +41,31 @@
       </div>
       <!-- bookmark button -->
 
+<!-- recp_description	
+thumbnail_url	
+original_video_url	
+prep_time_minutes	
+total_time_minutes	
+cook_time_minutes
+
+Country	
+num_servings	
+keywords	
+inspired_by_url	
+yields -->
+
       <!-- card -->
       <div class="d-lg-block d-none rounded-4 card position-absolute positioning bg-gray overflow-hidden" style="width: 25rem;">
           <div class="position-relative overflow-hidden w-100" style="height: 100px;">
-            <img src="images/favicon.png" class="card-img-top" alt="...">
+            <img src="images/favicon.png" class="card-img-top" alt="">
           </div>
           <div class="card-body bg-gray fs-5">
-            <ul class="px-0 py-1">
-              <li class="cust mb-3"> <span class="fw-semibold">Cook :</span><span class="text-muted">1h 20min</span></li>
-              <li class="cust mb-3"> <span class="fw-semibold">Additional :</span><span class="text-muted">1h 20min</span></li>
-              <li class="cust mb-3"> <span class="fw-semibold">Total :</span><span class="text-muted">1h 20min</span></li>
-              <li class="cust mb-3"> <span class="fw-semibold">Servings :</span><span class="text-muted">1h 20min</span></li>
-              <li class="cust"> <span class="fw-semibold">Yield :</span><span class="text-muted">1h 20min</span></li>
+            <ul class="px-0 py-3">
+              <li class="cust mb-3"> <span class="fw-semibold">Cook :</span><span class="text-muted"><?php echo $result0['cook_time_minutes']?></span></li>
+              <li class="cust mb-3"> <span class="fw-semibold">Additional :</span><span class="text-muted"><?php echo $result0['prep_time_minutes']?></span></li>
+              <li class="cust mb-3"> <span class="fw-semibold">Total :</span><span class="text-muted"><?php echo $result0['total_time_minutes']?></span></li>
+              <li class="cust mb-4"> <span class="fw-semibold">Servings :</span><span class="text-muted"><?php echo $result0['num_servings']?></span></li>
+              <li class="cust mb-4"> <span class="fw-semibold">Yield :</span><span class="text-muted"><?php echo $result0['yields']?></span></li>
             </ul>
           </div>
           <div class="d-flex justify-content-center mb-4">
@@ -67,11 +78,11 @@
       <div class="d-lg-none d-block card container p-0">
           <div class="card-body colorset">
             <ul class="px-0 py-1">
-              <li class="cust mb-2"> <span class="fw-semibold">Cook :</span>1h 20min</li>
-              <li class="cust mb-2"> <span class="fw-semibold">Additional :</span>1h 20min</li>
-              <li class="cust mb-2"> <span class="fw-semibold">Total :</span>1h 20min</li>
-              <li class="cust mb-2"> <span class="fw-semibold">Servings :</span>1h 20min</li>
-              <li class="cust"> <span class="fw-semibold">Yield :</span>1h 20min</li>
+            <li class="cust mb-3"> <span class="fw-semibold">Cook :</span><span class="text-muted"><?php echo $result0['cook_time_minutes']?></span></li>
+              <li class="cust mb-3"> <span class="fw-semibold">Additional :</span><span class="text-muted"><?php echo $result0['prep_time_minutes']?></span></li>
+              <li class="cust mb-3"> <span class="fw-semibold">Total :</span><span class="text-muted"><?php echo $result0['total_time_minutes']?></span></li>
+              <li class="cust mb-4"> <span class="fw-semibold">Servings :</span><span class="text-muted"><?php echo $result0['num_servings']?></span></li>
+              <li class="cust mb-4"> <span class="fw-semibold">Yield :</span><span class="text-muted"><?php echo $result0['yields']?></span></li>
             </ul>
           </div>
       </div>

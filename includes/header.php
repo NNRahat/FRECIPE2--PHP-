@@ -46,34 +46,36 @@
             <div class="modal-header border-0 px-0 py-2 w-100">
               <ul class="nav nav-tabs w-75 border-new-color">
                 <li class="nav-item w-50">
-                  <a class="nav-link active fw-bolder" data-bs-toggle="tab" aria-current="page" href="#log-in">LOGIN</a>
+                  <a class="nav-link active profile-side-hover fw-bolder" data-bs-toggle="tab" aria-current="page" href="#log-in">LOGIN</a>
                 </li>
                 <li class="nav-item w-50">
-                  <a class="nav-link fw-bolder" data-bs-toggle="tab" href="#sign-up">SIGNUP</a>
+                  <a class="nav-link fw-bolder profile-side-hover" data-bs-toggle="tab" href="#sign-up">SIGNUP</a>
                 </li>
               </ul>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
           </div>
 
+
           <div class="tab-content">
             <!-- log in  -->
             <div id="log-in" class="modal-body tab-pane show active p-5 pt-0">
+            
               <div class="modal-header px-0 py-2 w-100 border-0">
                 <h1 class="fw-bold mb-0 fs-2">Log In</h1>
               </div>
-              <form class="">
+              <form class="" method="post">
                 <!-- email -->
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" name="loginEmail">
                   <label for="floatingInput">Email address</label>
                 </div>
                 <!-- password -->
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="loginPass">
                   <label for="floatingPassword">Password</label>
                 </div>
-                <button class="w-100 mb-2 btn btn-lg rounded-3 bg-darkgreen text-light" type="submit">Log in</button>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 bg-darkgreen text-light"  name="login" type="submit">Log in</button>
                 <span class="d-flex justify-content-between align-items-center my-3">
                   <hr style="width: 40%;">
                   <h2 class="fs-5 fw-bold w-25 text-center">Or</h2>
@@ -98,23 +100,35 @@
             </div>
             <!-- sign up -->
             <div id="sign-up" class="tab-pane modal-body p-5 pt-0">
+              <div style="padding:0px 150px">
+                  <h6 style="font-size:16px;margin-top:15px;color:red" align="center"> <?php if($msg1){
+                      echo $msg1;
+                  }  ?> </h6>
+                  <h6 style="font-size:16px;margin-top:15px;color:red" align="center"> <?php if($msg2){
+                  echo $msg2;
+                  }  ?> </h6>  
+              </div>
               <div class="modal-header px-0 py-2 w-100 border-0">
                 <h1 class="fw-bold mb-0 fs-2">Sign up </h1>
               </div>
-              <form class="">
+              <form class="" method="post">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control rounded-3" name="username" id="floatingInput" placeholder="name">
+                  <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control rounded-3" name="signupEmail" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <input type="password" class="form-control rounded-3" name="signupPassword"  id="floatingPassword" placeholder="Password">
                   <label for="floatingPassword">Password</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="signupConfirmPassword">
                   <label for="floatingPassword">Confirm Password</label>
                 </div>
-                <button class="w-100 mb-2 btn btn-lg rounded-3 bg-darkgreen text-light" type="submit">Sign up</button>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 bg-darkgreen text-light" name="signup" type="submit">Sign up</button>
                 <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                 <!-- hr and or -->
                 <span class="d-flex justify-content-between align-items-center my-3">
@@ -219,16 +233,24 @@
           </li> 
         </ul>
 
+<?php
+$User_ID=$_SESSION['uid'];                 
+$ret15=mysqli_query($con, "Select * from users where user_id='$User_ID'");
+$result15=mysqli_fetch_array($ret15);
+?>
         <!-- #################### image ######################## -->
         <div class="dropdown">
-          <img class="userpicture" role="button" src="images1/users/player-1.png" alt="">
+          <?php if(strlen($_SESSION['uid'] != 0)){?>
+          <img class="userpicture" role="button" src="<?php echo $result15['profile_pic'];?>" alt="">
+          <?php }?>
+
           <ul class="dropdown-menu end-0">
-            <li><a class="dropdown-item" href="myprofile.php">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Saved recipes</a></li>
-            <li><a class="dropdown-item" href="#">Add a recipe</a></li>
-            <li><a class="dropdown-item" href="#">My recipes</a></li>
+            <li><a class="dropdown-item" href="myprofile.php?editid=<?php echo $User_ID;?>">Profile</a></li>
+            <li><a class="dropdown-item" href="favrecipe.php?editid=<?php echo $User_ID;?>">Saved recipes</a></li>
+            <li><a class="dropdown-item" href="addrecipe.php?editid=<?php echo $User_ID;?>">Add a recipe</a></li>
+            <li><a class="dropdown-item" href="my-recipes.php?editid=<?php echo $User_ID;?>">My recipes</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Log out!</a></li>
+            <li><a class="dropdown-item" href="includes/logout.php">Log out!</a></li>
           </ul>
         </div>
       </nav>

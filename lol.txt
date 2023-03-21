@@ -1,0 +1,30 @@
+          <div class="carousel-item container-fluid px-0 h-100">
+
+                       <!-- two for transparent and opacity purpose -->
+             <div class="card position-absolute positioning-headline rounded-0 z-3 bg-transparent rounded-3 border-0">
+               <a href="" class="link-hover"><h2 class="px-4 py-3">Lorem ipsum, dolor sit amet consectetur.</h2></a>
+             </div>
+             <div class="card position-absolute positioning-headline rounded-0 z-2 opacity-75 rounded-3 border-0">
+               <a href="" class="link-hover"><h2 class="px-4 py-3">Lorem ipsum, dolor sit amet consectetur.</h2></a>
+             </div>
+                       <!-- two for transparent and opacity purpose -->
+
+             <span class="d-flex justify-content-center px-0 h-100">
+               <img class="w-100 h-100 object-fit-cover" src="images1/chicken.jpg"  alt="...">
+             </span>
+           </div>
+           <div class="carousel-item container-fluid h-100">
+
+                       <!-- two for transparent and opacity purpose -->
+             <div class="card position-absolute positioning-headline rounded-0 z-3 bg-transparent rounded-3 border-0">
+               <a href="" class="link-hover"><h2 class="px-4 py-3">Lorem ipsum, dolor sit amet consectetur.</h2></a>
+             </div>
+             <div class="card position-absolute positioning-headline rounded-0 z-2 opacity-75 rounded-3 border-0">
+               <a href="" class="link-hover"><h2 class="px-4 py-3">Lorem ipsum, dolor sit amet consectetur.</h2></a>
+             </div>
+                       <!-- two for transparent and opacity purpose -->
+
+             <span class="d-flex justify-content-center h-100">
+               <img class="w-100 h-100 object-fit-cover" src="images1/chicken-bun.jpg"  alt="...">
+             </span>
+           </div>
