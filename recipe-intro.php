@@ -29,7 +29,7 @@ include('includes/dbconnection.php');
         <div class="carousel-inner z-0 h-100">
           <div class="carousel-item active container-fluid px-0 h-100">
             <span class="position-relative d-flex justify-content-center h-100 z-1">
-              <img class="w-100 h-100 object-fit-cover" src="<?php echo $result0['thumbnail_url']?>"  alt="...">
+              <img class="w-100 h-100 object-fit-cover" src="<?php echo $result0['thumbnail_url'];?>"  alt="...">
             </span>
           </div>
         </div>
@@ -109,9 +109,7 @@ yields -->
           <!-- detail card -->
           <div class="bg-gray rounded-4 p-5 mb-5">
             <div class="mb-5">
-              <h3>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, maiores ipsa similique nostrum molestias tempora repellat?
-              </h3>
+              <h3><?php echo $result0['recp_description'];?></h3>
             </div>
             <div class="d-flex align-items-center justify-content-start">
               <span class="overflow-hidden rounded-circle me-3" style="width:80px;height: 80px;">
