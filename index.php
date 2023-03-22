@@ -3,8 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if(isset($_POST['login']))
-{
+if(isset($_POST['login'])){
     $Email=$_POST['loginEmail'];
     $Password=$_POST['loginPass'];
 
@@ -123,11 +122,32 @@ if(isset($_POST['search'])){
         <h1 class="fw-bolder mt-5 mb-3"><span id="lgdes">Featured</span> Recipes</h1>    
         <div class="recipes-grids w-100">
         <?php             
-      $random0 = rand(1,17);
-      $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$random0'");
-      $result1=mysqli_fetch_array($ret1);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-big" href="recipe-intro.php?editid=<?php echo $random0;?>">
+        $array = [];
+        $counter=0;
+        while($counter!=7){
+          $flag = 0;
+          $random7 = rand(1,17);
+          $array_lenght = sizeof($array);
+          if($array_lenght == 0){
+            array_push($array,$random7);
+            $array_lenght++;
+          }else{
+            for($i = 0; $i <= $array_lenght; $i++){
+              if($random7 == $array[$i]){
+                $flag = 1;
+                break;
+              }
+            }
+            if($flag == 0){
+              array_push($array,$random7);
+              $counter++;
+            }
+          }
+        }
+          $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[0]'");
+          $result1=mysqli_fetch_array($ret1);
+      ?>              
+          <a class="grid-card-group rounded-4 overflow-hidden card-big" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <!-- <div > -->
             <div class=" h-100">
               <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
@@ -137,81 +157,75 @@ if(isset($_POST['search'])){
             </div>
           </a>
           <?php             
-      $random1 = rand(1,17);
-      $ret2=mysqli_query($con, "Select * From recipes where recipe_id='$random1'");
-      $result2=mysqli_fetch_array($ret2);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $random1;?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[1]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result2['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result2['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
               </div>
           </a>
           <?php             
-      $random2 = rand(1,17);
-      $ret3=mysqli_query($con, "Select * From recipes where recipe_id='$random2'");
-      $result3=mysqli_fetch_array($ret3);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $random2;?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[2]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result3['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result3['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
               </div>
           </a>
           <?php             
-      $random3 = rand(1,17);
-      $ret4=mysqli_query($con, "Select * From recipes where recipe_id='$random3'");
-      $result4=mysqli_fetch_array($ret4);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-long" href="recipe-intro.php?editid=<?php echo $random3['recipe_id'];?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[3]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-long" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result4['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result4['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
               </div>
           </a>
           <?php             
-      $random4 = rand(1,17);
-      $ret5=mysqli_query($con, "Select * From recipes where recipe_id='$random4'");
-      $result5=mysqli_fetch_array($ret5);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $random4;?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[4]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result5['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result5['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
               </div>
           </a>
           <?php             
-      $random5 = rand(1,17);
-      $ret6=mysqli_query($con, "Select * From recipes where recipe_id='$random5'");
-      $result6=mysqli_fetch_array($ret6);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-long" href="recipe-intro.php?editid=<?php echo $random5;?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[5]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-long" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100 w-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result6['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result6['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
               </div>
           </a>
           <?php             
-      $random6 = rand(1,17);
-      $ret7=mysqli_query($con, "Select * From recipes where recipe_id='$random6'");
-      $result7=mysqli_fetch_array($ret7);
-      ?>
-          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $random6;?>">
+                $ret1=mysqli_query($con, "Select * From recipes where recipe_id='$array[6]'");
+                $result1=mysqli_fetch_array($ret1);
+            ?>
+          <a class="grid-card-group rounded-4 overflow-hidden card-small" href="recipe-intro.php?editid=<?php echo $result1['recipe_id'];?>">
             <div class=" h-100">
-              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result7['thumbnail_url'];?>" alt="">
+              <img class="h-100 w-100 scalingtrans object-fit-cover" src="<?php echo $result1['thumbnail_url'];?>" alt="">
             </div>
             <div class="overly px-5 position-absolute">
-                <h4><?php echo $result7['recp_name'];?></h4>
+                <h4><?php echo $result1['recp_name'];?></h4>
             </div>
           </a>
           
@@ -246,12 +260,34 @@ if(isset($_POST['search'])){
           
           
           <div class="non-veges-wrappper d-flex align-items-center overflow-hidden ps-3">
-            <?php             
-              for ($counter=0; $counter < 7; $counter++) {
-                $random7 = rand(1,17);
-                $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$random7'");
-                $result8=mysqli_fetch_array($ret8);
-                ?> 
+              <?php             
+                $array = [];
+                $counter=0;
+                while($counter!=7){
+                  $flag = 0;
+                  $random7 = rand(1,17);
+                  $array_lenght = sizeof($array);
+                  if($array_lenght == 0){
+                    array_push($array,$random7);
+                    $array_lenght++;
+                  }else{
+                    for($i = 0; $i <= $array_lenght; $i++){
+                      if($random7 == $array[$i]){
+                        $flag = 1;
+                        break;
+                      }
+                    }
+                    if($flag == 0){
+                      array_push($array,$random7);
+                      $counter++;
+                    }
+                  }
+                }
+                $array_lenght = sizeof($array);
+                for($i = 0; $i < $array_lenght; $i++){
+                  $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$array[$i]'");
+                  $result8=mysqli_fetch_array($ret8);
+              ?> 
               <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 overflow-hidden me-3 position-relative bg-gray" style="width: 18rem;height: 24rem;">
 
                 <!-- bookmark button -->
@@ -264,12 +300,17 @@ if(isset($_POST['search'])){
                   <img src="<?php echo $result8['thumbnail_url'];?>" class="w-100 h-100 object-fit-cover card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                  <a href="recipe-intro.php?editid=<?php echo $random7;?>" class=""><h5 class="card-title mt-3 mb-2"><?php echo $result8['recp_name'];?></h5></a>
+                  <a href="recipe-intro.php?editid=<?php echo $result0['recipe_id'];?>>" class=""><h5 class="card-title mt-3 mb-2"><?php echo $result8['recp_name'];?></h5></a>
                 </div>
               </div>
-            <?php             
+              <?php             
             }
             ?> 
+            <!-- <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 overflow-hidden me-3" style="width: 14rem;height: 24rem;">
+              <div class="justify-content-center d-flex align-items-center h-100">
+                <a class="fs-4" href="">View all<i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div> -->
         </div>
 
       </div>
@@ -314,12 +355,34 @@ if(isset($_POST['search'])){
           </button>
           
           <div class="non-veges-wrappper d-flex align-items-center overflow-hidden ps-3">
-            <?php             
-              for ($counter=0; $counter < 7; $counter++) {
-                $random7 = rand(1,17);
-                $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$random7'");
-                $result8=mysqli_fetch_array($ret8);
-                ?> 
+          <?php             
+                $array = [];
+                $counter=0;
+                while($counter!=7){
+                  $flag = 0;
+                  $random7 = rand(1,17);
+                  $array_lenght = sizeof($array);
+                  if($array_lenght == 0){
+                    array_push($array,$random7);
+                    $array_lenght++;
+                  }else{
+                    for($i = 0; $i <= $array_lenght; $i++){
+                      if($random7 == $array[$i]){
+                        $flag = 1;
+                        break;
+                      }
+                    }
+                    if($flag == 0){
+                      array_push($array,$random7);
+                      $counter++;
+                    }
+                  }
+                }
+                $array_lenght = sizeof($array);
+                for($i = 0; $i < $array_lenght; $i++){
+                  $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$array[$i]'");
+                  $result8=mysqli_fetch_array($ret8);
+              ?> 
               <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 overflow-hidden me-3 position-relative bg-gray" style="width: 18rem;height: 24rem;">
 
                 <!-- bookmark button -->
@@ -382,11 +445,7 @@ if(isset($_POST['search'])){
   <!--############################ footer ##############################-->
     <?php include_once('includes/footer.php');?>
 
-    <script src="js/script.js"></script>
 
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="bootstrap/JS/bootstrap.min.js"></script>
-    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -29,9 +29,19 @@
                   <a type="button" class="nav-link ms-lg-2 px-4 bg-darkgreen text-light rounded-3 pe-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" id="text-white" aria-current="page" href=""><b>Login</b></a>
                 </li>
               </ul>
-              <form class="input-group mw-100 mt-5 my-lg-0" role="search">
-                <input type="text" class="form-control rounded-start-pill border-0 bg-gray py-3 px-4 " placeholder="search" aria-label="" aria-describedby="button-addon2">
+
+              <form class="input-group mw-100 mt-5 my-lg-0 position-relative" role="search">
+                <input type="text" id="search" name="search" class="form-control rounded-start-pill border-0 bg-gray py-3 px-4 " placeholder="search" aria-label="" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary rounded-end-pill py-2 px-4 border-0 bg-gray" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="overflow-hidden position-absolute bg-gray shodow rounded-5 w-75 z-3" style="top:102%">
+                  <div id="show_list">
+                    
+                  </div>
+                  <!-- <ul class="navbar-nav flex-column fs-4 " id="show_list">                        
+                    <li class=""><a class="" href=""><button class="w-100 py-2 px-4 overflow-hidden border-0 search-div-hover text-start"><?php //echo $ret21['recipe_id'];?></button></a></li>
+                  </ul> -->
+                </div>
+
               </form>
           </div>
         </div>
@@ -160,12 +170,12 @@
   </header>
 
   <!--########################## second navbar ##############################-->
-    <div class="colorset nav-scroller shadow-sm pb-1 pt-1 position-sticky left-0 z-3 mt-0" style="top: -0.1%;">
+    <div class="colorset nav-scroller shadow-sm pb-1 pt-1 position-sticky left-0 z-2 mt-0" style="top: -0.1%;">
       <nav class="nav d-lg-flex justify-content-between align-items-center pe-4 py-1" aria-label="Secondary navigation">
 
       <!--###################### links #################### -->
         <ul class="navbar-nav ps-lg-3 mb-2 mb-lg-0 d-lg-flex flex-lg-row flex-row flex-wrap" >
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
+          <li class="nav-item dropdown ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">DINNERS</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">5-Ingredient Dinners</a></li>
@@ -178,7 +188,7 @@
               <li><a class="dropdown-item" href="#">Sheet Pan Dinners</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
+          <li class="nav-item dropdown ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">MEALS</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Breakfast & Brunch</a></li>
@@ -189,7 +199,7 @@
               <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
+          <li class="nav-item dropdown ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">INGREDIENTS</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Chicken</a></li>
@@ -201,7 +211,7 @@
               <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
+          <li class="nav-item dropdown ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="" role="button">OCCASIONS</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">St. Patrick's Day</a></li>
@@ -213,7 +223,7 @@
               <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown mx-2 fs-6 fw-bolder">
+          <li class="nav-item dropdown ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="">CUISINES</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">US</a></li>
@@ -225,7 +235,7 @@
               <li><a class="dropdown-item" href="#">VIEW ALL</a></li>
             </ul>
           </li>
-          <li class="nav-item mx-2 fs-6 fw-bolder">
+          <li class="nav-item ms-2 me-3 fs-6 fw-bolder">
             <a class="nav-link" href="#">ABOUT US</a>
           </li> 
         </ul>

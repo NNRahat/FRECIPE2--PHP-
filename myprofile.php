@@ -207,11 +207,6 @@ if(isset($_POST['save_profile']))
   <!--############################ footer ##############################-->
     <?php include_once('includes/footer.php');?>
 
-    <script src="js/script.js"></script>
-
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="bootstrap/JS/bootstrap.min.js"></script>
-    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

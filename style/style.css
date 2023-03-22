@@ -14,6 +14,27 @@
     --bs-for-a:#3a6a4f;
 }
 
+
+/* search bar  */
+
+.search-div-hover-a{
+    width: 100% !important;
+    text-decoration: none;
+    color: black !important;
+} 
+.search-div-hover{
+    width: 100% !important;
+    text-decoration: none;
+    background-color: #eceef0 !important;
+    color: black !important;
+} 
+.search-div-hover:hover{
+    text-decoration: none;
+    background-color: #f0f6fc !important;
+    color: black !important;
+} 
+
+
 /* profile pic after log in###################### */
 .userpicture{
     width: 40px;

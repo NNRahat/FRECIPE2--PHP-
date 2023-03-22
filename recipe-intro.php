@@ -36,7 +36,7 @@ include('includes/dbconnection.php');
       </div>
       
       <!-- bookmark button -->
-      <div class="overflow-hidden position-absolute rounded-circle bg-light border-0 z-2" style="left: 7%;bottom: 4%;width: 4rem;height: 4rem;">
+      <div class="overflow-hidden position-absolute rounded-circle bg-light border-0 z-1" style="left: 7%;bottom: 4%;width: 4rem;height: 4rem;">
         <button class=" border-0 fs-3 w-100 h-100 bg-darkgreen text-light"><i class="fa-regular fa-bookmark"></i></button>
       </div>
       <!-- bookmark button -->
@@ -237,12 +237,6 @@ yields -->
     <!--############################ footer ##############################-->
     <?php include_once('includes/footer.php');?>
 
-
-
-    <script src="js/script.js"></script>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="bootstrap/JS/bootstrap.min.js"></script>
-    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
 
 
 </body>

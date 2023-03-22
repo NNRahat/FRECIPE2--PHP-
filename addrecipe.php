@@ -69,7 +69,7 @@
               <input class="w-75 form-control py-3 text-muted" type="text" placeholder= "Enter the steps one by one!" name="ingredient[]" id="" >
             </div>
             <div class="container">
-              <a type="button" class="add my-3 py-3 btn text-light bg-darkgreen">Add another ingredient!</a>
+              <button class="add my-3 py-3 btn text-light bg-darkgreen">Add another ingredient!</button>
               <!-- <form action="" method="post">
               <a type="button" name="hello" class="my-3 py-3 btn text-light bg-darkgreen">submit</a>
             </form> -->
@@ -84,46 +84,6 @@
   <!--############################### footer ######################### -->
   <?php include_once('includes/footer.php');?>
 
-    <script type="text/javascript" src="js/script.js">
-        // for increasing input field
-
-    const add =document.querySelector('.add');
-    const input = document.querySelector('.steps');
-
-    function removeInput(){
-        this.parentElement.remove();
-    }
-
-    function addInput(){
-        const name = document.createElement("input");
-        name.type = "text";
-        name.placeholder= "Enter the steps one by one!";
-        name.name = "ingredients[]";
-        name.className = "form-control w-75 py-3 my-3"
-        
-        const btn = document.createElement("a");
-        btn.className= "delete bg-darkgreen text-light px-2 py-2"
-        btn.innerHTML= "&times;"
-
-        btn.addEventListener("click",removeInput);
-
-        const flex = document.createElement("div");
-        flex.className = "flex"
-
-        input.appendChild(flex);
-        flex.appendChild(name);
-        flex.appendChild(email);
-        flex.appendChild(btn);
-        
-    }
-
-    add.addEventListener("click",addInput);
-
-    </script>
-
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="bootstrap/JS/bootstrap.min.js"></script>
-    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

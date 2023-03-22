@@ -29,22 +29,21 @@ NonVegesWrappper.forEach((item, i) => {
     function addInput(){
         const name = document.createElement("input");
         name.type = "text";
-        name.placeholder= "Enter the steps one by one!";
+        name.placeholder= "Enter the Ingredients one by one!";
         name.name = "ingredients[]";
-        name.className = "form-control w-75 py-3 my-3"
+        name.className = "form-control d-inline w-75 py-3 ms-0 me-3";
         
-        const btn = document.createElement("a");
-        btn.className= "delete bg-darkgreen text-light px-2 py-2"
-        btn.innerHTML= "&times;"
+        const btn = document.createElement("button");
+        btn.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
+        btn.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 
         btn.addEventListener("click",removeInput);
 
         const flex = document.createElement("div");
-        flex.className = "flex"
+        flex.className = "d-flex align-items-center my-2";
 
         input.appendChild(flex);
         flex.appendChild(name);
-        flex.appendChild(email);
         flex.appendChild(btn);
         
     }
@@ -78,23 +77,27 @@ defaultBtn.addEventListener("change", function(){
 
 
 
-// $('.extra-fields-customer').click(function() {
-//     $('.customer_records').clone().appendTo('.customer_records_dynamic');
-//     $('.customer_records_dynamic .customer_records').addClass('single remove');
-//     $('.single .extra-fields-customer').remove();
-//     $('.single').append('<a href="#" class="remove-field btn-remove-customer">Remove Fields</a>');
-//     $('.customer_records_dynamic > .single').attr("class", "remove");
-  
-//     $('.customer_records_dynamic input').each(function() {
-//       var count = 0;
-//       var fieldname = $(this).attr("name");
-//       $(this).attr('name', fieldname + count);
-//       count++;
-//     });
-  
-//   });
-  
-//   $(document).on('click', '.remove-field', function(e) {
-//     $(this).parent('.remove').remove();
-//     e.preventDefault();
-//   });
+// search suggession
+
+$(document).ready(function(){
+    $("#search").keyup(function(){
+        var searchText = $(this).val();
+        if(searchText!=''){
+            $.ajax({
+                url:'action.php',
+                method:'post',
+                data:{query:searchText},
+                success:function(response){
+                    $("#show_list").html(response);
+                }
+            });
+        }
+        else{
+            $("#show_list").htmls('');
+        }
+        $(document).on('click','button',function(){
+            $("#search").val($(this).text());
+            $("#show_list").html('');
+        });
+    });
+});
