@@ -11,4 +11,4 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     
     <!-- bootstrap -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css?v=<?php echo time(); ?>">

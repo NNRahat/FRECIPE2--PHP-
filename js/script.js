@@ -17,14 +17,17 @@ NonVegesWrappper.forEach((item, i) => {
 })
 // end of home page card animation
 
-// for increasing input field
 
-    const add =document.querySelector('.add');
-    const input = document.querySelector('.steps');
+
+// for increasing input field
 
     function removeInput(){
         this.parentElement.remove();
     }
+
+    // for ingredients
+    const addingred =document.querySelector('.addingred');
+    const inputingred = document.querySelector('.ingred');
 
     function addInput(){
         const name = document.createElement("input");
@@ -42,14 +45,40 @@ NonVegesWrappper.forEach((item, i) => {
         const flex = document.createElement("div");
         flex.className = "d-flex align-items-center my-2";
 
-        input.appendChild(flex);
+        inputingred.appendChild(flex);
         flex.appendChild(name);
         flex.appendChild(btn);
         
     }
 
-    add.addEventListener("click",addInput);
+    // for ingredients
+    const addstep =document.querySelector('.addstep');
+    const inputsteps = document.querySelector('.steps');
+    function addsteps(){
+        const namestep = document.createElement("input");
+        namestep.type = "text";
+        namestep.placeholder= "Enter the Ingredients one by one!";
+        namestep.name = "direction[]";
+        namestep.className = "form-control d-inline w-75 py-3 ms-0 me-3";
+        
+        const btnstep = document.createElement("button");
+        btnstep.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
+        btnstep.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 
+        btnstep.addEventListener("click",removeInput);
+
+        const flexstep = document.createElement("div");
+        flexstep.className = "d-flex align-items-center my-2";
+
+        inputsteps.appendChild(flexstep);
+        flexstep.appendChild(namestep);
+        flexstep.appendChild(btnstep);
+        
+    }
+
+    addingred.addEventListener("click",addInput);
+    addstep.addEventListener("click",addsteps);
+// end of increasing input field
 
 
 
@@ -79,25 +108,25 @@ defaultBtn.addEventListener("change", function(){
 
 // search suggession
 
-$(document).ready(function(){
-    $("#search").keyup(function(){
-        var searchText = $(this).val();
+    function searchfunction(){
+        // var searchText = $(this).val();
+        var searchText = document.getElementById("search").value;
         if(searchText!=''){
             $.ajax({
                 url:'action.php',
                 method:'post',
                 data:{query:searchText},
                 success:function(response){
-                    $("#show_list").html(response);
+                    document.getElementById("show_list").innerHTML = response;
                 }
             });
         }
         else{
-            $("#show_list").htmls('');
+            document.getElementById("show_list").innerHTML = '';
         }
+        
         $(document).on('click','button',function(){
             $("#search").val($(this).text());
             $("#show_list").html('');
         });
-    });
-});
+    }

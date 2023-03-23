@@ -6,7 +6,7 @@ include('includes/dbconnection.php');
 if(isset($_POST['query'])){
       $input=$_POST['query']; 
 
-      $query20=mysqli_query($con,"select recipe_id from recipes where recp_name LIKE '%$input%' OR recp_description LIKE '%$input%' ");
+      $query20=mysqli_query($con,"select recipe_id from recipes where recp_name LIKE '%$input%'");
       $num= $con->query($query20); 
       if($num->num_rows > 0 ){
         while($row=$result->fetch_assoc()){

@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
     if($ret>0){
         $_SESSION['uid']=$ret['user_id'];
         header('location:index.php');
+        $msg2="Log in Successful!";
     }
     else{
         $msg1="Invalid Details.";
@@ -36,7 +37,7 @@ if(isset($_POST['signup'])){
       $query1=mysqli_query($con, "insert into users(user_name,user_email,user_password) values ('$uname','$e_mail','$psw')");
       if ($query1) { 
           echo '<script type ="text/JavaScript"> 
-              alert("You are succesfully registerd. press \"ok\" to log in")
+              alert("You are succesfully registerd. press \"ok\" and log in")
           </script> '; 
       }
       else{
