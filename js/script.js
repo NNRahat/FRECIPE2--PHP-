@@ -37,6 +37,7 @@ NonVegesWrappper.forEach((item, i) => {
         name.className = "form-control d-inline w-75 py-3 ms-0 me-3";
         
         const btn = document.createElement("button");
+        btn.type="button"
         btn.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
         btn.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 
@@ -55,24 +56,24 @@ NonVegesWrappper.forEach((item, i) => {
     const addstep =document.querySelector('.addstep');
     const inputsteps = document.querySelector('.steps');
     function addsteps(){
-        const namestep = document.createElement("input");
-        namestep.type = "text";
-        namestep.placeholder= "Enter the Ingredients one by one!";
-        namestep.name = "direction[]";
-        namestep.className = "form-control d-inline w-75 py-3 ms-0 me-3";
-        
         const btnstep = document.createElement("button");
         btnstep.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
         btnstep.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 
+        const namestep = document.createElement("input");
+        namestep.type = "text";
+        namestep.placeholder= "Enter the steps one by one!";
+        namestep.name = "direction[]";
+        namestep.className = "form-control w-75 py-3 ms-3 me-0";
+
         btnstep.addEventListener("click",removeInput);
 
         const flexstep = document.createElement("div");
-        flexstep.className = "d-flex align-items-center my-2";
+        flexstep.className = "d-flex align-items-start w-100 my-2 justify-content-end";
 
         inputsteps.appendChild(flexstep);
-        flexstep.appendChild(namestep);
         flexstep.appendChild(btnstep);
+        flexstep.appendChild(namestep);
         
     }
 

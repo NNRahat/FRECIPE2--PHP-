@@ -221,7 +221,7 @@ yields -->
         <!-- video part  -->
         <div class="w-50 ">       
           <div class="position-sticky p-3 m-0 rounded-3" style="right:0;top: 30%;">
-            <video autoplay controls controlsList="nodownload" class="rounded-4 w-100 object-fit-cover" src="video/pizza.mp4"></video>
+            <video autoplay controls controlsList="nodownload" class="rounded-4 w-100 object-fit-cover" src="<?php echo $result0['original_video_url'];?>"></video>
             <!-- <iframe height="315" class="rounded-4 w-100 object-fit-cover" src="https://www.youtube.com/embed/8Er5fjgOhhc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
           </div>
         </div>
