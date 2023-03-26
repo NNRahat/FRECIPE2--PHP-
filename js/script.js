@@ -88,7 +88,7 @@ NonVegesWrappper.forEach((item, i) => {
 
 const defaultBtn = document.querySelector('#upload') ;
 const custom_btn = document.querySelector('#custom_btn') ;
-const img = document.querySelector('img') ;
+const img = document.querySelector('#bruh') ;
 function defaultBtnActive(){
     defaultBtn.click();
 }
@@ -104,6 +104,26 @@ defaultBtn.addEventListener("change", function(){
     }
     
 });
+const defaultBtn_profile = document.querySelector('#load') ;
+const defaultBtn_custom = document.querySelector('#custom_load') ;
+const img2 = document.querySelector('#bruh_profile') ;
+function defaultBtnProfileActive(){
+    defaultBtn_profile.click();
+}
+defaultBtn_profile.addEventListener("change", function(){
+    const file2 = this.files[0];
+    if(file2){
+        const reader2 = new FileReader();
+        reader2.onload = function(){
+            const result2 = reader2.result2;
+            img2.src = result2;
+        }
+        reader2.readAsDataURL(file2);
+    }
+    
+});
+
+
 
 
 

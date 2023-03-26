@@ -48,11 +48,11 @@ include('includes/dbconnection.php');
                       <textarea name="" id="" cols="30" class="rounded-3 px-2 py-2 form-control" style="resize: none;height: 144px;"></textarea>
                     </span>
                   </div>
-                  <div class="col-6 d-flex align-items-center justify-content-center pt-3">
+                  <div class="col-6 d-flex align-items-center justify-content-center pt-3" style="height:285px">
                     <div class="bg-success w-75 rounded-3 d-flex justify-content-center bg-body align-items-center h-100">
-                      <div class="w-100 h-100 d-flex justify-content-center align-items-center position-relative">
-                        <input type="file" name="file" id="upload" class="">
-                        <img class="w-100 h-100 d-block" src="images1/chicken.jpg" alt="" srcset="">
+                      <div class="w-100 h-100 d-flex justify-content-center align-items-center position-relative" >
+                        <input type="file" class="d-none" name="file" id="upload" class="">
+                        <img class="w-100 h-100 d-block object-fit-cover" id="bruh" src="images1/chicken.jpg" alt="" srcset="">
                         <label id="custom_btn" onclick="defaultBtnActive()" class="w-100 text-center bg-darkgreen text-light position-absolute start-0 bottom-0">Upload</label>
                       </div>
                     </div>

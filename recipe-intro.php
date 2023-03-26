@@ -116,14 +116,26 @@ include('includes/dbconnection.php');
             <div class="mb-5">
               <h3><?php echo $result0['recp_description'];?></h3>
             </div>
-            <div class="d-flex align-items-center justify-content-start">
-              <span class="overflow-hidden rounded-circle me-3" style="width:80px;height: 80px;">
-                <img class="h-100 w-100 object-fit-cover" src="<?php echo $result0['profile_pic'];?>" alt="">
-              </span>
-              <span class="d-flex flex-column mt-0">
-                <p class="text-dark" href=""><h4><?php echo $result0['F_name']." ".$result0['L_name'];?></h4></p>
-                <p><?php echo $result0['Country'];?></p>
-              </span>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center justify-content-start">
+                <span class="overflow-hidden rounded-circle me-3" style="width:80px;height: 80px;">
+                  <img class="h-100 w-100 object-fit-cover" src="<?php echo $result0['profile_pic'];?>" alt="">
+                </span>
+                <span class="d-flex flex-column mt-3">
+                  <h4 class="mb-0"><?php echo $result0['display_name'];?></h4>
+                  <p><?php echo $result0['Country'];?></p>
+                </span>
+              </div>
+
+              <!-- socials -->
+              <div>
+                <ul class="nav justify-content-end list-unstyled d-flex flex-row fs-3">
+                  <li class="ms-4"><a href="<?php echo $result0['Twitter'];?>"><i class="fa-brands fa-twitter"></i></a></li>
+                  <li class="ms-4"><a href="<?php echo $result0['Facebook'];?>"><i class="fa-brands fa-facebook"></i></a></li>
+                  <li class="ms-4"><a href="<?php echo $result0['Instagram'];?>"><i class="fa-brands fa-instagram"></i></a></li>
+                </ul>
+              </div>
+              
             </div>
           </div>
 

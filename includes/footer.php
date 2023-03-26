@@ -13,7 +13,7 @@
       </ul>
     </footer>
   </div>
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="bootstrap/JS/bootstrap.min.js"></script>
     <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
