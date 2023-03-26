@@ -34,7 +34,7 @@ include('includes/dbconnection.php');
             while($ret=mysqli_fetch_array($ret0)){
                 
             ?> 
-            <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 me-3 bg-gray overflow-hidden" style="width: 18rem;height: 24rem;">
+            <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 me-3 mb-4 bg-gray overflow-hidden" style="width: 18rem;height: 24rem;">
 
                 <!-- bookmark button -->
                 

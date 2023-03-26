@@ -104,24 +104,7 @@ defaultBtn.addEventListener("change", function(){
     }
     
 });
-const defaultBtn_profile = document.querySelector('#load') ;
-const defaultBtn_custom = document.querySelector('#custom_load') ;
-const img2 = document.querySelector('#bruh_profile') ;
-function defaultBtnProfileActive(){
-    defaultBtn_profile.click();
-}
-defaultBtn_profile.addEventListener("change", function(){
-    const file2 = this.files[0];
-    if(file2){
-        const reader2 = new FileReader();
-        reader2.onload = function(){
-            const result2 = reader2.result2;
-            img2.src = result2;
-        }
-        reader2.readAsDataURL(file2);
-    }
-    
-});
+
 
 
 
@@ -133,7 +116,7 @@ defaultBtn_profile.addEventListener("change", function(){
     function searchfunction(){
         // var searchText = $(this).val();
         var searchText = document.getElementById("search").value;
-        if(searchText!=''){
+        if(searchText != ''){
             $.ajax({
                 url:'action.php',
                 method:'post',
@@ -152,3 +135,8 @@ defaultBtn_profile.addEventListener("change", function(){
             $("#show_list").html('');
         });
     }
+
+
+
+
+    

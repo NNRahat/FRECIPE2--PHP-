@@ -24,17 +24,25 @@ include('includes/dbconnection.php');
 
     <!--######################### my recipes  ########################### not done!!--> 
     <section class="gap my-5 non-veges">
+    <?php   
+            $aid=$_SESSION['tid']; 
+            $query_searh =mysqli_query($con, "SELECT * FROM recipes WHERE recp_description LIKE '%$aid%' OR recp_name LIKE '%$aid%' OR Cuisines LIKE '%$aid%' OR OCCASIONS LIKE '%$aid%' OR Meals LIKE '%$aid%' OR Dinner LIKE '%$aid%' OR Ingredients LIKE '%$aid%'");
+            ?>
       <div class="container pt-3">
         <div class="d-flex justify-content-between align-items-center p-2 mb-4  ">
-            <h1 class="mb-5">My Recipes</h1>
-            <a class="btn bg-darkgreen py-3 px-4 text-light" href="addrecipe.php?editid=<?php echo $User_ID;?>">Add new recipe</a>
+            <h1 class="mb-5"><?php echo "Search for $aid"?></h1>
         </div>
         <div class="non-veges-wrappper d-flex align-items-center ps-3 flex-wrap">
-            <?php             
-            while($ret=mysqli_fetch_array($query)){
+            
+            <?php 
+            $num=mysqli_num_rows($query_searh); 
+            if($num == 0){?>  
+              <h1>Sorry! No result regarding this search </h1>
+            <?php }else{
+              while($ret=mysqli_fetch_array($query_searh)){
                 
             ?> 
-            <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 me-3 mb-3 bg-gray overflow-hidden" style="width: 18rem;height: 24rem;">
+            <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 me-4 mb-4 bg-gray overflow-hidden" style="width: 18rem;height: 24rem;">
                 <div class="w-100" style="height: 65%;">
                     <img src="<?php echo $ret['thumbnail_url'];?>" class="w-100 h-100 object-fit-cover card-img-top" alt="...">
                 </div>
@@ -43,7 +51,7 @@ include('includes/dbconnection.php');
                 </div>
             </div>
             <?php             
-        }
+        }}
         ?> 
 
     </div>

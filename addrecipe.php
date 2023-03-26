@@ -3,7 +3,50 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
+if(isset($_POST['submit'])){
+  $userid=$_GET['editid']; 
 
+  $title=$_POST['title'];
+  $Description=$_POST['Description'];
+
+  // $img=$_POST['file'];
+    $img_fileName=$_FILES["file"]["name"];
+    $img_fileTmpName =$_FILES["file"]['tmp_name'];
+    $img_fileDestination= 'images1/'.$img_fileName;
+  move_uploaded_file($img_fileTmpName, $img_fileDestination);
+
+
+  $ingredient=$_POST['ingredient'];
+  $string_ingred = join('=>',$ingredient);
+
+  $direction=$_POST['direction'];
+  $string_direction = join('=>',$direction);
+
+  $Additional=$_POST['Additional'];
+  $Total=$_POST['Total'];
+  $Cook=$_POST['Cook'];
+  $Servings=$_POST['Servings'];
+  $Yield=$_POST['Yield'];
+  // $Cuisines=$_POST['Cuisines'];
+  // $Occasion=$_POST['Occasion'];
+  // $dinner=$_POST['dinner'];
+  // $Meals=$_POST['Meals'];
+  // ,OCCASIONS,Dinner,Meals,Cuisines,'$Occasion','$dinner','$Meals','$Cuisines'
+  $query=mysqli_query($con,"INSERT INTO recipes (user_id, recp_name, recp_description, thumbnail_url,Ingredients, Steps,prep_time_minutes,total_time_minutes,cook_time_minutes,num_servings,yields) VALUES ('$userid','$title','$Description','$img_fileDestination','$string_ingred','$string_direction','$Additional','$Total','$Cook','$Servings','$Yield'");
+
+  // $_SESSION['userid'] = $userid;
+  header('location:addrecipe2.php');
+  if($query){
+    echo "<script>alert('Record Added Successfully');</script>";
+      echo "<script>window.location.href='index.php'</script>";
+
+}
+else{
+  echo "<script>alert('Sry! something went wrong');</script>";
+      echo "<script>window.location.href='index.php'</script>"; 
+}
+  
+}
 
 
 ?>
@@ -26,7 +69,6 @@ include('includes/dbconnection.php');
     <section class="d-lg-flex justify-content-center align-items-center mt-3">
         <div class="container w-75 bg-gray">
           <div id="Public-Profile-Setting" class="p-5">
-
             <div class="container pb-4">
               <h1>Add a new recipe</h1>
               <p>You can add the recipe and share with your friends, family and with the Frecipe community.</p>
@@ -41,11 +83,11 @@ include('includes/dbconnection.php');
                   <div class="col-6 d-flex flex-column text-start">
                     <span class="d-flex flex-column mb-3">
                       <label for="">Recipe Title:</label>
-                      <input type="text" class="rounded-3 px-2 form-control" style="height: 50px;">
+                      <input type="text" name="title" class="rounded-3 px-2 form-control" style="height: 50px;">
                     </span>
                     <span class="d-flex flex-column">
                       <label for="">Description in short :</label>
-                      <textarea name="" id="" cols="30" class="rounded-3 px-2 py-2 form-control" style="resize: none;height: 144px;"></textarea>
+                      <textarea name="Description" id="" cols="30" class="rounded-3 px-2 py-2 form-control" style="resize: none;height: 144px;"></textarea>
                     </span>
                   </div>
                   <div class="col-6 d-flex align-items-center justify-content-center pt-3" style="height:285px">
@@ -88,119 +130,44 @@ include('includes/dbconnection.php');
                   </div>
                 </div>
               </div>
-  
+              
               <!-- time and quatity -->
               <div class="container my-5">
                 <label class="fs-4 mb-2 fw-semibold">Time and Quantity</label>
                 <div class="w-100 d-flex flex-wrap fs-5 fw-regular">
-                  <div class="w-50 px-2 ">
-                    <label>Cook</label>
-                    <input type="text" class="w-100 form-control py-3 text-muted mb-2">
-                  </div>
-                  <div class="w-50 px-2">
-                    <label>Additional</label>
-                    <input type="text" class="w-100 form-control py-3 text-muted mb-2">
-                  </div>
-                  <div class="w-50 px-2">
-                    <label>Total</label>
-                    <input type="text" class="w-100 form-control py-3 text-muted mb-2">
-                  </div>
-                  <div class="w-50 px-2">
-                    <label>Servings</label>
-                    <input type="text" class="w-100 form-control py-3 text-muted mb-2">
-                  </div>
-                  <div class="w-50 px-2">
-                    <label>Yield</label>
-                    <input type="text" class="w-100 form-control py-3 text-muted mb-2">
-                  </div>
+                    <div class="w-50 px-2 ">
+                      <label>Cook</label>
+                      <input type="text" name="Cook" class="w-100 form-control py-3 text-muted mb-2">
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Additional</label>
+                      <input type="text" name="Additional" class="w-100 form-control py-3 text-muted mb-2">
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Total</label>
+                      <input type="text" name="Total" class="w-100 form-control py-3 text-muted mb-2">
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Servings</label>
+                      <input type="text" name="Servings" class="w-100 form-control py-3 text-muted mb-2">
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Yield</label>
+                      <input type="text" name="Yield" class="w-100 form-control py-3 text-muted mb-2">
+                    </div>
                 
-              </div>
-  
-              <!-- video -->
-              <div class="container my-5">
-                <label class="fs-4 mb-2 fw-semibold">Video</label>
-                <div class="input-group mb-3">
-                  <input type="file" name="file" class="form-control">               
                 </div>
-              </div>
 
-              <!-- catagories that it belongs -->
-              <div class="container my-5">
-                <label class="fs-4 mb-2 fw-semibold">Catagories that it belongs <small class="text-muted">(optional but efficient !!)</small></label>
-                <div class="w-100 d-flex flex-wrap fs-5 fw-regular">
-                
-                  <!-- Dinner -->
-                  <div class="w-50 px-2 ">
-                    <label>Dinner</label>
-                    <input class="w-100 form-control py-3 text-muted mb-2" list="dinner" type="text" name="dinner" placeholder="Select dinner" required>
-                      <datalist id="dinner">
-                          <option value="5-Ingredient Dinners">
-                          <option value="One-Pot Meals">
-                          <option value="Quick & Easy">
-                          <option value="30-Minute Meals">
-                          <option value="Soups, Stews & Chili">
-                          <option value="Comfort Food">
-                          <option value="Main Dishes">
-                          <option value="Sheet Pan Dinners">
-                      </datalist>
-                  </div>
-
-                  <!-- Meals -->
-                  <div class="w-50 px-2 ">
-                    <label>Meals</label>
-                    <input class="w-100 form-control py-3 text-muted mb-2" list="Meals" type="text" name="Meals" placeholder="Select Meals" required>
-                      <datalist id="Meals">
-                          <option value="Breakfast & Brunch">
-                          <option value="Lunch">
-                          <option value="Healthy">
-                          <option value="Appetizers & Snacks">
-                          <option value="Dessert">
-                      </datalist>
-                  </div>
-
-                  <!--OCCASION-->
-                  <div class="w-50 px-2 ">
-                    <label>Occasion</label>
-                    <input class="w-100 form-control py-3 text-muted mb-2" list="Occasion" type="text" name="Occasion" placeholder="Select Occasion" required>
-                      <datalist id="Occasion">
-                          <option value="St. Patrick's Day">
-                          <option value="Thanksgiving">
-                          <option value="Ramadan">
-                          <option value="April Fools' Day">
-                          <option value="Passover">
-                          <option value="Easter">
-                      </datalist>
-                  </div>
-
-                  <!-- Cuisines -->
-                  <div class="w-50 px-2 ">
-                    <label>Cuisines</label>
-                    <input class="w-100 form-control py-3 text-muted mb-2" list="Cuisines" type="text" name="Cuisines" placeholder="Select Cuisines" required>
-                      <datalist id="Cuisines">
-                          <option value="US">
-                          <option value="Italian">
-                          <option value="Greek">
-                          <option value="Indian">
-                          <option value="Filipino">
-                          <option value="Japanese">
-                      </datalist>
-                  </div>
-                  
-                
               
+
+              </div>
+                
+              <!-- submit -->
+              <div class="container">
+                <button name="submit" class="fs-4 fw-semibold btn bg-darkgreen text-light w-100 py-3 " >Submit</button>
               </div>
 
-            
-
-          </div>
-        </div>
-
-        
-            <!-- submit -->
-            <div class="container">
-              <button name="submit" class="fs-4 fw-semibold btn bg-darkgreen text-light w-100 py-3 " >Submit</button>
-            </div>
-        </form>
+            </form>
           </div>
         </div>
     </section>

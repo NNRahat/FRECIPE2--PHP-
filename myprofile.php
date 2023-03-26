@@ -59,7 +59,7 @@ if(isset($_POST['for_public'])){
                   <a class="nav-link rounded-0 fw-semibold active profile-side-hover" aria-current="page" data-bs-toggle="tab" href="#personal-info">Personal Info</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link rounded-0 fw-semibold profile-side-hover" aria-current="page" data-bs-toggle="tab" href="#Public-Profile-Setting">Public Profile Setting</a>
+                  <a class="nav-link rounded-0 fw-semibold profile-side-hover" aria-current="page" data-bs-toggle="tab" id="next_page" href="#Public-Profile-Setting">Public Profile Setting</a>
                 </li>
                 <!-- <li class="nav-item">
                   <a class="nav-link rounded-0 fw-semibold profile-side-hover" aria-current="page" data-bs-toggle="tab" href="#Change-Password ">Change Password</a>
