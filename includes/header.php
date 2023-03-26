@@ -267,7 +267,7 @@
             <li><a class="dropdown-item" href="myprofile.php?editid=<?php echo $User_ID;?>">Profile</a></li>
             <li><a class="dropdown-item" href="favrecipe.php?editid=<?php echo $User_ID;?>">Saved recipes</a></li>
             <li><a class="dropdown-item" href="addrecipe.php?editid=<?php echo $User_ID;?>">Add a recipe</a></li>
-            <li><a class="dropdown-item" href="my-recipes.php?editid=<?php echo $User_ID;?>">My recipes</a></li>
+            <li><a class="dropdown-item" href="myrecipes.php?editid=<?php echo $User_ID;?>">My recipes</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="includes/logout.php">Log out!</a></li>
           </ul>

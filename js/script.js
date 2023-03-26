@@ -37,7 +37,7 @@ NonVegesWrappper.forEach((item, i) => {
         name.className = "form-control d-inline w-75 py-3 ms-0 me-3";
         
         const btn = document.createElement("button");
-        btn.type="button"
+        btn.type="button";
         btn.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
         btn.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 
@@ -57,6 +57,7 @@ NonVegesWrappper.forEach((item, i) => {
     const inputsteps = document.querySelector('.steps');
     function addsteps(){
         const btnstep = document.createElement("button");
+        btnstep.type="button";
         btnstep.className= "btn bg-darkgreen text-light px-2 py-2 mx-0";
         btnstep.innerHTML= '<i class="fa-sharp fa-solid fa-xmark text-light px-3 py-2 fs-5"></i>';
 

@@ -20,9 +20,14 @@ include('includes/dbconnection.php');
     <main class="colorset">
     <?php 
     $aid=$_GET['editid'];    
-    $ret0=mysqli_query($con, "Select * From recipes where recipe_id='$aid'");      
-    $result0=mysqli_fetch_array($ret0);?>
-    
+    // $ret0=mysqli_query($con, "Select * From recipes where recipe_id='$aid'");      
+    $ret0=mysqli_query($con, "Select * From recipes INNER JOIN users ON recipes.user_id=users.user_id INNER JOIN cooker ON users.user_id=cooker.user_id where recipes.recipe_id='$aid'");      
+    $result0=mysqli_fetch_array($ret0);
+
+
+
+
+    ?>
     <!--####################### hero carousel ########################-->
     <section class="d-flex flex-column justify-content-center align-items-center px-0 w-100 position-relative" style="height: 100vh;">
       <div id="carouselExampleAutoplaying" class="carousel slide w-100 h-100 overflow-hidden " data-bs-ride="carousel">
@@ -41,19 +46,6 @@ include('includes/dbconnection.php');
       </div>
       <!-- bookmark button -->
 
-<!-- recp_description	
-thumbnail_url	
-original_video_url	
-prep_time_minutes	
-total_time_minutes	
-cook_time_minutes
-
-Country	
-num_servings	
-keywords	
-inspired_by_url	
-yields -->
-
       <!-- card -->
       <div class="d-lg-block d-none rounded-4 card position-absolute positioning bg-gray overflow-hidden" style="width: 25rem;">
           <div class="position-relative overflow-hidden w-100" style="height: 100px;">
@@ -68,9 +60,7 @@ yields -->
               <li class="cust mb-4"> <span class="fw-semibold">Yield :</span><span class="text-muted"><?php echo $result0['yields']?></span></li>
             </ul>
           </div>
-          <div class="d-flex justify-content-center mb-4">
-            <button class="btn text-light bg-darkgreen px-4 py-3 fw-semibold fs-5 rounded-3" id="text-white">Nutrition info</button>
-          </div>
+
       </div>
       <!-- card -->
 
@@ -113,11 +103,11 @@ yields -->
             </div>
             <div class="d-flex align-items-center justify-content-start">
               <span class="overflow-hidden rounded-circle me-3" style="width:80px;height: 80px;">
-                <img class="h-100 w-100 object-fit-cover" src="images/favicon.png" alt="">
+                <img class="h-100 w-100 object-fit-cover" src="<?php echo $result0['profile_pic'];?>" alt="">
               </span>
-              <span class="d-flex flex-column mt-3">
-                <a class="text-dark" href=""><h4>lorem ipsum</h4></a>
-                <p>lorem, ipsum</p>
+              <span class="d-flex flex-column mt-0">
+                <p class="text-dark" href=""><h4><?php echo $result0['F_name']." ".$result0['L_name'];?></h4></p>
+                <p><?php echo $result0['Country'];?></p>
               </span>
             </div>
           </div>
@@ -133,6 +123,7 @@ yields -->
       <div class="d-flex container">
         <!-- ingredient and direction part -->
         <div class="w-50 ">
+
           <!-- INGREDIENTS list -->
           <div class="d-lg-flex p-3" >
             <!-- static header only -->
@@ -141,26 +132,28 @@ yields -->
             </div>
             <!-- dynamic ingredient list -->
             <div class="d-lg-flex w-75 flex-lg-column">
-              <div class="d-lg-flex mb-3">
-                <span class="align-items-start">
-                  <label class="rounded-circle border border-new-color me-3 d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;">1</label>
-                </span>
-                <span>
-                  <label class="d-lg-flex align-items-center">
-                    <p class="m-0 " style="font-size:18px;">2 table spoon extra virgin olive oil</p>
-                  </label>
-                </span>
-              </div>
-              <div class="d-lg-flex mb-3">
-                <span class="align-items-start">
-                  <label class="rounded-circle border border-new-color me-3 d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;">2</label>
-                </span>
-                <span>
-                  <label class="d-lg-flex align-items-center">
-                    <p class="m-0 " style="font-size:18px;">2 table spoon extra virgin olive oil</p>
-                  </label>
-                </span>
-              </div>
+              
+              <?php
+                  $ingredients_str = $result0['Ingredients'];
+                  $ingredients_array = explode('=>',$ingredients_str);
+                  $ingredients_array_length = sizeof($ingredients_array);
+                for($i=0;$i<$ingredients_array_length;$i++){
+              ?>
+
+                <div class="d-lg-flex mb-3">
+                  <span class="align-items-start">
+                    <label class="rounded-circle border border-new-color me-3 d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;"><?php echo $i+1?></label>
+                  </span>
+                  <span>
+                    <label class="d-lg-flex align-items-center">
+                      <p class="m-0 " style="font-size:18px;"><?php echo "$ingredients_array[$i]"?></p>
+                    </label>
+                  </span>
+                </div>
+              
+              <?php
+              }
+              ?>
 
               
             </div>
@@ -174,46 +167,29 @@ yields -->
             </div>
             <!-- dynamic direction list -->
             <div class="d-lg-flex w-75 flex-lg-column">
+            <?php
+                $steps_str = $result0['Steps'];
+                $steps_array = explode('=>',$steps_str);
+                $steps_array_length = sizeof($steps_array);
+              for($i=0;$i<$steps_array_length;$i++){
+            ?>
               <div class="d-lg-flex mb-3">
                 <span class="d-lg-flex align-items-center flex-column me-3">
                   <span class="mb-2">
-                    <label class="rounded-circle border border-new-color d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;">1</label>
+                    <label class="rounded-circle border border-new-color d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;"><?php echo $i+1?></label>
                   </span>
                   <span class="h-100 w-0 border border-start border-new-color"></span>
                 </span>
                 <span>
                   <label class="d-lg-flex align-items-center">
-                    <p class="m-0 " style="font-size:18px;">2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eveniet, corporis laboriosam quibusdam ullam obcaecati odio placeat voluptatum rerum perspiciatis! Eum porro, iure sed laudantium quibusdam incidunt laboriosam blanditiis natus!</p>
+                    <p class="m-0 " style="font-size:18px;"><?php echo "$steps_array[$i]"?></p>
                   </label>
                 </span>
               </div>
-              <div class="d-lg-flex mb-3">
-                <span class="d-lg-flex align-items-center flex-column me-3">
-                  <span class="mb-2">
-                    <label class="rounded-circle border border-new-color d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;">2</label>
-                  </span>
-                  <span class="h-100 w-0 border border-start border-new-color"></span>
-                </span>
-                <span>
-                  <label class="d-lg-flex align-items-center">
-                    <p class="m-0 " style="font-size:18px;">2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eveniet, corporis laboriosam quibusdam ullam obcaecati odio placeat voluptatum rerum perspiciatis! Eum porro, iure sed laudantium quibusdam incidunt laboriosam blanditiis natus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dolore officia repellat! Laboriosam, molestias consectetur. Exercitationem eaque quasi veniam, eos voluptates accusamus atque neque architecto maxime blanditiis magnam inventore mollitia.</p>
-                  </label>
-                </span>
-              </div>
-              <div class="d-lg-flex mb-3">
-                <span class="d-lg-flex align-items-center flex-column me-3">
-                  <span class="mb-2">
-                    <label class="rounded-circle border border-new-color d-flex justify-content-center align-items-center" style="width: 2rem;height: 2rem;">3</label>
-                  </span>
-                  <!-- <span class="h-100 w-0 border border-start border-new-color"></span> -->
-                </span>
-                <span>
-                  <label class="d-lg-flex align-items-center">
-                    <p class="m-0 fw-normal" style="font-size:18px;">2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil2 table spoon extra virgin olive oil Lorem ipsum dolor </p>
-                  </label>
-                </span>
-              </div>
-              
+              <?php
+              }
+              ?>
+             
             </div>
           </div>
         </div>
@@ -221,8 +197,7 @@ yields -->
         <!-- video part  -->
         <div class="w-50 ">       
           <div class="position-sticky p-3 m-0 rounded-3" style="right:0;top: 30%;">
-            <video autoplay controls controlsList="nodownload" class="rounded-4 w-100 object-fit-cover" src="<?php echo $result0['original_video_url'];?>"></video>
-            <!-- <iframe height="315" class="rounded-4 w-100 object-fit-cover" src="https://www.youtube.com/embed/8Er5fjgOhhc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+            <video controls controlsList="nodownload" class="rounded-4 w-100 h-75" src="<?php echo $result0['original_video_url'];?>"></video>
           </div>
         </div>
       </div>
