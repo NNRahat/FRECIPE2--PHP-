@@ -1,3 +1,79 @@
+<?php
+
+if(isset($_POST['login'])){
+    $Email=$_POST['loginEmail'];
+    $Password=$_POST['loginPass'];
+
+    $query=mysqli_query($con,"select user_id from users where user_email='$Email' && user_password='$Password' ");
+    $ret=mysqli_fetch_array($query);
+    if($ret>0){
+        $_SESSION['uid']=$ret['user_id'];
+        header('location:index.php');
+        $msg2="Log in Successful!";
+    }
+    else{
+        $msg1="Invalid Details.";
+    }
+}
+
+
+if(isset($_POST['signup'])){
+  $uname=$_POST['username'];
+  $e_mail=$_POST['signupEmail'];
+  $psw=$_POST['signupPassword'];
+  $Cpsw=$_POST['signupConfirmPassword'];
+  $ret1=mysqli_query($con, "select user_id from users where user_email='$e_mail'");
+  $result1=mysqli_fetch_array($ret1);
+  if($result1>0){
+      $msg1=  "This email is already associated with another account"; 
+  }
+  else if($psw != $Cpsw){
+      $msg2=  "passwords don't match. Try again.";    
+  }
+  else{
+      $query1=mysqli_query($con, "insert into users(user_name,user_email,user_password) values ('$uname','$e_mail','$psw')");
+      if ($query1) { 
+          echo '<script type ="text/JavaScript"> 
+              alert("You are succesfully registerd. press \"ok\" and log in")
+          </script> '; 
+      }
+      else{
+          echo '<script>alert("Something Went Wrong. Please try again.");</script>';
+      }
+  }
+}
+
+if(isset($_POST['search'])){
+    $Emp_ID=$_SESSION['uid'];
+    $catagory=$_POST['catagory'];
+    $City=$_POST['City']; 
+    $_SESSION['City']=$City;
+    $_SESSION['catagory']=$catagory; 
+    // $row = mysqli_query($con, "Select Emp_GIG_ID from gigs where GIG_City='$city' AND GIG_Catagory='$catagory'");
+    header('location:hirenowfilter.php');
+    
+}
+
+//bookmark
+$User_ID=$_SESSION['uid'];
+  $aid=$_GET['editid'];   
+  $query=mysqli_query($con,"select * from recipes where user_id='$aid'");
+
+  if(isset($_POST['Fav'])){
+      // $query_fav=mysqli_query($con,"select * from recipes where user_id='$aid'");
+      // $for_fav=mysqli_fetch_array($query_fav);
+      $recipe_id= $_POST['forvalue'];
+
+      $query4=mysqli_query($con,"INSERT INTO favrecipe(recipe_id, user_id) VALUES ('$recipe_id','$User_ID')");
+  }
+  if(isset($_POST['Fav_delete'])){   
+      $recipe_id= $_POST['fordelete']; 
+      $query5=mysqli_query($con,"DELETE FROM favrecipe WHERE recipe_id='$recipe_id'");
+  }
+
+
+?>
+
 <header>
     <!-- place navbar here -->
     <nav class="colorset navbar navbar-expand-lg pb-0 bg-body-primary d-flex justify-content-center align-items-center ps-2 pe-0">

@@ -41,8 +41,23 @@ include('includes/dbconnection.php');
       </div>
       
       <!-- bookmark button -->
-      <div class="overflow-hidden position-absolute rounded-circle bg-light border-0 z-1" style="left: 7%;bottom: 4%;width: 4rem;height: 4rem;">
-        <button class=" border-0 fs-3 w-100 h-100 bg-darkgreen text-light"><i class="fa-regular fa-bookmark"></i></button>
+      <div class="overflow-hidden position-absolute d-flex justify-content-center align-items-center rounded-circle bg-darkgreen border-0 z-1" style="left: 7%;bottom: 4%;width: 4rem;height: 4rem;">
+        <form action="" method="post">
+          <?php  
+              $query2=mysqli_query($con,"select fav_id from favrecipe where user_id='$User_ID' && recipe_id='$aid'");
+              $res2 = mysqli_fetch_array($query2); 
+              if(strlen($res2['fav_id'] == 0)){
+          ?> 
+          <input class="d-none" type="text" name="forvalue" id="" value="<?php echo $aid?>">
+          <button name="Fav" class="btn border-0 fs-3 w-100 h-100 bg-darkgreen text-light "><i class="fa-regular fa-bookmark"></i></button>
+          <?php             
+              }else{
+          ?>
+              <input class="d-none" type="text" name="fordelete" id="" value="<?php echo $aid?>">
+              <button name="Fav_delete" class="border-0 fs-3 w-100 h-100 bg-darkgreen text-light"><i class="fa-solid fa-bookmark text-light"></i></button>
+          <?php }
+          ?>
+        </form>
       </div>
       <!-- bookmark button -->
 

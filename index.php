@@ -3,59 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if(isset($_POST['login'])){
-    $Email=$_POST['loginEmail'];
-    $Password=$_POST['loginPass'];
-
-    $query=mysqli_query($con,"select user_id from users where user_email='$Email' && user_password='$Password' ");
-    $ret=mysqli_fetch_array($query);
-    if($ret>0){
-        $_SESSION['uid']=$ret['user_id'];
-        header('location:index.php');
-        $msg2="Log in Successful!";
-    }
-    else{
-        $msg1="Invalid Details.";
-    }
-}
-
-
-if(isset($_POST['signup'])){
-  $uname=$_POST['username'];
-  $e_mail=$_POST['signupEmail'];
-  $psw=$_POST['signupPassword'];
-  $Cpsw=$_POST['signupConfirmPassword'];
-  $ret1=mysqli_query($con, "select user_id from users where user_email='$e_mail'");
-  $result1=mysqli_fetch_array($ret1);
-  if($result1>0){
-      $msg1=  "This email is already associated with another account"; 
-  }
-  else if($psw != $Cpsw){
-      $msg2=  "passwords don't match. Try again.";    
-  }
-  else{
-      $query1=mysqli_query($con, "insert into users(user_name,user_email,user_password) values ('$uname','$e_mail','$psw')");
-      if ($query1) { 
-          echo '<script type ="text/JavaScript"> 
-              alert("You are succesfully registerd. press \"ok\" and log in")
-          </script> '; 
-      }
-      else{
-          echo '<script>alert("Something Went Wrong. Please try again.");</script>';
-      }
-  }
-}
-
-if(isset($_POST['search'])){
-    $Emp_ID=$_SESSION['uid'];
-    $catagory=$_POST['catagory'];
-    $City=$_POST['City']; 
-    $_SESSION['City']=$City;
-    $_SESSION['catagory']=$catagory; 
-    // $row = mysqli_query($con, "Select Emp_GIG_ID from gigs where GIG_City='$city' AND GIG_Catagory='$catagory'");
-    header('location:hirenowfilter.php');
-    
-}?>
+?>
 <!doctype html>
 <html lang="en">
 
@@ -291,12 +239,6 @@ if(isset($_POST['search'])){
               ?> 
               <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 overflow-hidden me-3 position-relative bg-gray" style="width: 18rem;height: 24rem;">
 
-                <!-- bookmark button -->
-                <div class="overflow-hidden position-absolute z-3 bg-gray rounded-2 " style="right:4%;top:3%;width: 2rem;height: 2rem;">
-                  <button class="d-flex justify-content-center align-items-center border-0 w-100 h-100"><i class="fa-regular fa-bookmark"></i></button>
-                </div>
-                 <!-- bookmark button -->
-
                 <div class="w-100" style="height: 65%;">
                   <img src="<?php echo $result8['thumbnail_url'];?>" class="w-100 h-100 object-fit-cover card-img-top" alt="...">
                 </div>
@@ -356,41 +298,35 @@ if(isset($_POST['search'])){
           </button>
           
           <div class="non-veges-wrappper d-flex align-items-center overflow-hidden ps-3">
-          <?php             
-                $array = [];
-                $counter=0;
-                while($counter!=7){
-                  $flag = 0;
-                  $random7 = rand(1,17);
-                  $array_lenght = sizeof($array);
-                  if($array_lenght == 0){
-                    array_push($array,$random7);
-                    $array_lenght++;
-                  }else{
-                    for($i = 0; $i <= $array_lenght; $i++){
-                      if($random7 == $array[$i]){
-                        $flag = 1;
-                        break;
+              <?php             
+                  $array = [];
+                  $counter=0;
+                  while($counter!=7){
+                    $flag = 0;
+                    $random7 = rand(1,17);
+                    $array_lenght = sizeof($array);
+                    if($array_lenght == 0){
+                      array_push($array,$random7);
+                      $array_lenght++;
+                    }else{
+                      for($i = 0; $i <= $array_lenght; $i++){
+                        if($random7 == $array[$i]){
+                          $flag = 1;
+                          break;
+                        }
+                      }
+                      if($flag == 0){
+                        array_push($array,$random7);
+                        $counter++;
                       }
                     }
-                    if($flag == 0){
-                      array_push($array,$random7);
-                      $counter++;
-                    }
                   }
-                }
-                $array_lenght = sizeof($array);
-                for($i = 0; $i < $array_lenght; $i++){
-                  $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$array[$i]'");
-                  $result8=mysqli_fetch_array($ret8);
-              ?> 
+                  $array_lenght = sizeof($array);
+                  for($i = 0; $i < $array_lenght; $i++){
+                    $ret8=mysqli_query($con, "Select * From recipes where recipe_id='$array[$i]'");
+                    $result8=mysqli_fetch_array($ret8);
+                ?> 
               <div class="card rounded-4 col-lg-3 col-md-4 col-sm-5 col-6 col-md-4 col-sm-5 col-6 overflow-hidden me-3 position-relative bg-gray" style="width: 18rem;height: 24rem;">
-
-                <!-- bookmark button -->
-                <div class="overflow-hidden position-absolute z-3 bg-gray rounded-2 " style="right:4%;top:3%;width: 2rem;height: 2rem;">
-                  <button class="d-flex justify-content-center align-items-center border-0 w-100 h-100"><i class="fa-regular fa-bookmark"></i></button>
-                </div>
-                 <!-- bookmark button -->
 
                 <div class="w-100" style="height: 65%;">
                   <img src="<?php echo $result8['thumbnail_url'];?>" class="w-100 h-100 object-fit-cover card-img-top" alt="...">
