@@ -107,7 +107,7 @@
                   <a class="nav-link active" aria-current="page" href="index.php"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"><b>Trending</b></a>
+                  <a class="nav-link active" aria-current="page" href="trending.php"><b>Trending</b></a>
                 </li>
                 <?php
                 $User_ID=$_SESSION['uid'];                 
@@ -328,9 +328,6 @@
               <li><a class="dropdown-item" href="search.php?editsearch=Filipino">Filipino</a></li>
               <li><a class="dropdown-item" href="search.php?editsearch=Japanese">Japanese</a></li>
             </ul>
-          </li>
-          <li class="nav-item ms-2 me-3 fs-6 fw-bolder">
-            <a class="nav-link" href="aboutus.php">ABOUT US</a>
           </li> 
         </ul>
 

@@ -27,12 +27,12 @@ if(isset($_POST['submit'])){
   $Cook=$_POST['Cook'];
   $Servings=$_POST['Servings'];
   $Yield=$_POST['Yield'];
-  // $Cuisines=$_POST['Cuisines'];
-  // $Occasion=$_POST['Occasion'];
-  // $dinner=$_POST['dinner'];
-  // $Meals=$_POST['Meals'];
-  // ,OCCASIONS,Dinner,Meals,Cuisines,'$Occasion','$dinner','$Meals','$Cuisines'
-  $query=mysqli_query($con,"INSERT INTO recipes (user_id, recp_name, recp_description, thumbnail_url,Ingredients, Steps,prep_time_minutes,total_time_minutes,cook_time_minutes,num_servings,yields) VALUES ('$userid','$title','$Description','$img_fileDestination','$string_ingred','$string_direction','$Additional','$Total','$Cook','$Servings','$Yield'");
+  $Cuisines=$_POST['Cuisines'];
+  $Occasion=$_POST['Occasion'];
+  $dinner=$_POST['Dinner'];
+  $Meals=$_POST['Meals'];
+  // ,'$Occasion','$dinner','$Meals','$Cuisines'
+  $query=mysqli_query($con,"INSERT INTO recipes (user_id, recp_name, recp_description, thumbnail_url,Ingredients, Steps,prep_time_minutes,total_time_minutes,cook_time_minutes,num_servings,yields,OCCASIONS,Dinner,Meals,Cuisines) VALUES ('$userid','$title','$Description','$img_fileDestination','$string_ingred','$string_direction','$Additional','$Total','$Cook','$Servings','$Yield','$Occasion','$dinner','$Meals','$Cuisines')");
 
   // $_SESSION['userid'] = $userid;
   header('location:addrecipe2.php');
@@ -156,6 +156,65 @@ else{
                       <input type="text" name="Yield" class="w-100 form-control py-3 text-muted mb-2">
                     </div>
                 
+                </div>
+
+              
+
+              </div>
+
+              <!-- catagory -->
+              <div class="container my-5">
+                <label class="fs-4 mb-2 fw-semibold">Catagory</label>
+                <div class="w-100 d-flex flex-wrap fs-5 fw-regular">
+                    <div class="w-50 px-2 ">
+                      <label>Dinner</label>
+                      <input class="w-100 form-control py-3 text-muted mb-2" list="Dinner" type="text" name="Dinner" placeholder="Select Dinner" required>
+                        <datalist id="Dinner">
+                          <option value="5-Ingredient Dinners">
+                          <option value="One-Pot Meals">
+                          <option value="Quick & Easy">
+                          <option value="30-Minute Meals">
+                          <option value="Soups, Stews & Chili">
+                          <option value="Comfort Food">
+                          <option value="Main Dishes">
+                          <option value="Sheet Pan Dinners">
+                        </datalist> 
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Meals</label>
+                      <input class="w-100 form-control py-3 text-muted mb-2" list="Meals" type="text" name="Meals" placeholder="Select Meals" required>
+                        <datalist id="Meals">
+                            <option value="Breakfast & Brunch">
+                            <option value="Lunch">
+                            <option value="Healthy">
+                            <option value="Appetizers & Snacks">
+                            <option value="Dessert">
+                        </datalist> 
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Cuisines</label>
+                      <input class="w-100 form-control py-3 text-muted mb-2" list="Cuisines" type="text" name="Cuisines" placeholder="Select Cuisines" required>
+                        <datalist id="Cuisines">
+                            <option value="St. Patrick's Day">
+                            <option value="Thanksgiving">
+                            <option value="Ramadan">
+                            <option value="April Fools' Day">
+                            <option value="Passover">
+                            <option value="Easter">
+                        </datalist> 
+                    </div>
+                    <div class="w-50 px-2">
+                      <label>Occasion</label>
+                      <input class="w-100 form-control py-3 text-muted mb-2" list="Occasion" type="text" name="Occasion" placeholder="Select Occasion" required>
+                                    <datalist id="Occasion">
+                                        <option value="US">
+                                        <option value="Italian">
+                                        <option value="Filipino">
+                                        <option value="Indian">
+                                        <option value="Japanese">
+                                        <option value="Greek">
+                                    </datalist> 
+                    </div>                
                 </div>
 
               

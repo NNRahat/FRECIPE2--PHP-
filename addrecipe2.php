@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
     $r_id = $result['recipe_id'];
 
 
-  $query=mysqli_query($con,"UPDATE recipes SET original_video_url='$vid_fileDestination',OCCASIONS='$Occasion',Dinner='$dinner',Meals='$Meals',Cuisines='$Cuisines' WHERE recipe_id=17");
+  $query=mysqli_query($con,"UPDATE recipes SET original_video_url='$vid_fileDestination' WHERE recipe_id='$r_id'");
   
   
   // $_SESSION['userid'] = $userid;
