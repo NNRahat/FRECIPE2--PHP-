@@ -46,7 +46,7 @@
 //   if(isset($_POST['query'])){
 //     $input=$_POST['query']; 
 
-//     $query20=mysqli_query($con,"SELECT recipe_id from recipes where recp_name LIKE '%$input%'");
+
 
   if(isset($_POST['search'])){
     
