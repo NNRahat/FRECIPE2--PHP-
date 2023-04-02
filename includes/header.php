@@ -56,9 +56,7 @@
 // }
   if(isset($_POST['search'])){
     
-    // $query20=mysqli_query($con,"SELECT recipe_id from recipes where recp_name LIKE '%$input%'");
-    // $num=mysqli_num_rows($query20);  
-    // header('location:search.php?editsearch=$seachbox');
+
     $seatvh=$_POST['seach_box'];
     header('location:search.php?editsearch='.$seatvh);
 
