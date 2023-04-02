@@ -43,11 +43,6 @@
     }
   }
 
-//   if(isset($_POST['query'])){
-//     $input=$_POST['query']; 
-
-
-
   if(isset($_POST['search'])){
     
 
