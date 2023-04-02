@@ -47,13 +47,7 @@
 //     $input=$_POST['query']; 
 
 //     $query20=mysqli_query($con,"SELECT recipe_id from recipes where recp_name LIKE '%$input%'");
-//     $num=mysqli_num_rows($query20);  
-//     if($num > 0 ){
-//       while($ret=mysqli_fetch_array($query20)){
-//         echo "<a href='#'><button class='w-100 py-2 px-4 overflow-hidden border-0 search-div-hover text-start'>".$ret['recp_name']."</button></a>";
-//       }
-//   }
-// }
+
   if(isset($_POST['search'])){
     
 
