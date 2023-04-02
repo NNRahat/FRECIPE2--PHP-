@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
   $query=mysqli_query($con,"UPDATE recipes SET original_video_url='$vid_fileDestination' WHERE recipe_id='$r_id'");
   
   
-  // $_SESSION['userid'] = $userid;
+
   if($query){
     echo "<script>alert('Record Added Successfully');</script>";
       echo "<script>window.location.href='index.php'</script>";
