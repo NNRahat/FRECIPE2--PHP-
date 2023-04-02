@@ -47,6 +47,7 @@ include('includes/dbconnection.php');
           
       
     <div class="container my-5">
+        <h1 class=" mb-4"><span class="text-darkgreen">Trending</span> today!</h1>
     <?php 
         $lenght = sizeof($array);
         for($i=0;$i<$lenght;$i++){

@@ -25,7 +25,7 @@ include('includes/dbconnection.php');
     <!--######################### my recipes  ########################### not done!!--> 
     <section class="gap my-5 non-veges">
     <?php   
-            $aid=$_SESSION['tid']; 
+            $aid=$_GET['editsearch'];
             $query_searh =mysqli_query($con, "SELECT * FROM recipes WHERE recp_description LIKE '%$aid%' OR recp_name LIKE '%$aid%' OR Cuisines LIKE '%$aid%' OR OCCASIONS LIKE '%$aid%' OR Meals LIKE '%$aid%' OR Dinner LIKE '%$aid%' OR Ingredients LIKE '%$aid%'");
             ?>
       <div class="container pt-3">
