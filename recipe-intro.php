@@ -20,7 +20,6 @@ include('includes/dbconnection.php');
     <main class="colorset">
     <?php 
     $aid=$_GET['editid'];    
-     
     $ret0=mysqli_query($con, "Select * From recipes INNER JOIN users ON recipes.user_id=users.user_id INNER JOIN cooker ON users.user_id=cooker.user_id where recipes.recipe_id='$aid'");      
     $result0=mysqli_fetch_array($ret0);
 
